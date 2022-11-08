@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import logo from '../../assets/logo.png';
+import logo from "../../assets/logo.png";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -12,18 +13,17 @@ const Header = () => {
           title="Company"
           className="inline-flex items-center"
         >
-          <img src={logo} className='h-14 w-32' alt="" /> 
+          <img src={logo} className="h-14 w-32" alt="" />
         </a>
         <ul className="flex items-center hidden space-x-8 lg:flex">
           <li>
-            <a
-              href="/"
-              aria-label="Our product"
+            <Link
+              to="/"
               title="Our product"
               className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
             >
-              Product
-            </a>
+              Home
+            </Link>
           </li>
           <li>
             <a

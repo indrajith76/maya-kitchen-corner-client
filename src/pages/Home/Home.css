@@ -1,0 +1,27 @@
+.awssld__bullets {
+  z-index: 10;
+  bottom: 20px !important;
+}
+
+.awssld__bullets button {
+  background: #ffffff8f;
+}
+
+.awssld__bullets .awssld__bullets--active {
+  background: white;
+}
+
+.awssld__controls__arrow-left::before {
+  background: white;
+}
+.awssld__controls__arrow-left::after {
+  background: white;
+}
+
+.awssld__controls__arrow-right::before {
+  background: white;
+}
+
+.awssld__controls__arrow-right::after {
+  background: white;
+}
