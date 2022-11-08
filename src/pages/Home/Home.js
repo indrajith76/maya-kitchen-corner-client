@@ -4,6 +4,7 @@ import withAutoplay from "react-awesome-slider/dist/autoplay";
 import "react-awesome-slider/dist/styles.css";
 import ServicesCard from "../../components/ServicesCard/ServicesCard";
 import "./Home.css";
+import {Link} from 'react-router-dom';
 
 const AutoplaySlider = withAutoplay(AwesomeSlider);
 
@@ -133,13 +134,22 @@ const Home = () => {
           </div>
         </div>
       </AutoplaySlider>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-        {
-            services.map(service => <ServicesCard key={service._id} service={service}></ServicesCard>)
-        }
+      <h2 className="text-5xl font-semibold text-slate-700 my-10">
+        Maya's Kitchen Foods
+      </h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 px-10 lg:p-0">
+        {services.map((service) => (
+          <ServicesCard key={service._id} service={service}></ServicesCard>
+        ))}
       </div>
-      See all
+      <div className="flex justify-center mt-16">
+        <Link to='/services'>
+            <button className="bg-yellow-300 text-xl font-semibold text-slate-700 py-1 px-8 rounded">See all</button>
+        </Link>
+      </div>
+      <div>
+        <h1 className="text-8xl text-red-500">add 2 more section</h1>
+      </div>
     </div>
   );
 };
