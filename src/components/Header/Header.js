@@ -37,6 +37,14 @@ const Header = () => {
                 Home
               </Link>
             </li>
+            <li>
+              <Link
+                to="/services"
+                className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+              >
+                Foods
+              </Link>
+            </li>
 
             {user && (
               <>
@@ -144,11 +152,17 @@ const Header = () => {
                       <li>
                         <Link
                           to="/"
-                          aria-label="Our product"
-                          title="Our product"
                           className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-400"
                         >
                           Home
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/services"
+                          className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-400"
+                        >
+                          Foods
                         </Link>
                       </li>
                       {user && (
