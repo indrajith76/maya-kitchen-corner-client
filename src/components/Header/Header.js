@@ -2,10 +2,19 @@ import React, { useContext, useState } from "react";
 import logo from "../../assets/logo.png";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
+import Swal from "sweetalert2";
 
 const Header = () => {
-  const { user } = useContext(AuthContext);
-  
+  const { user, logOut } = useContext(AuthContext); 
+
+  const handleSignOut = () => {
+    logOut()
+      .then(() => {
+        Swal.fire("LogOut Successfully!", "", "success");
+      })
+      .then((err) => console.error(err));
+  };
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   return (
     <div className="shadow-md sticky top-0 z-20 bg-white ">
@@ -28,46 +37,55 @@ const Header = () => {
                 Home
               </Link>
             </li>
-            <li>
-              <Link
-                to="/"
-                className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-              >
-                My Reviews
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/"
-                className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-              >
-                Add Service
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/"
-                className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-              >
-                Log Out
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/signin"
-                className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-400 hover:bg-purple-700 focus:shadow-outline focus:outline-none"
-              >
-                Sign In
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/signup"
-                className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-400 hover:bg-purple-700 focus:shadow-outline focus:outline-none"
-              >
-                Sign Up
-              </Link>
-            </li>
+
+            {user && (
+              <>
+                <li>
+                  <Link
+                    to="/"
+                    className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                  >
+                    My Reviews
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/"
+                    className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                  >
+                    Add Service
+                  </Link>
+                </li>
+                <li>
+                  <button
+                    onClick={handleSignOut}
+                    className="font-medium tracking-wide border bg-yellow-300 hover:bg-yellow-400 duration-500 px-3 py-1 rounded-md text-gray-700"
+                  >
+                    Log Out
+                  </button>
+                </li>
+              </>
+            )}
+            {!user && (
+              <>
+                <li>
+                  <Link
+                    to="/signin"
+                    className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-400 hover:bg-purple-700 focus:shadow-outline focus:outline-none"
+                  >
+                    Sign In
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/signup"
+                    className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-400 hover:bg-purple-700 focus:shadow-outline focus:outline-none"
+                  >
+                    Sign Up
+                  </Link>
+                </li>
+              </>
+            )}
           </ul>
           <div className="lg:hidden">
             <button

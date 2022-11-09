@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { FaGoogle, FaFacebook, FaGithub } from "react-icons/fa";
+import Swal from "sweetalert2";
 import { AuthContext } from "../../contexts/AuthProvider";
 
 const SignUp = () => {
@@ -41,8 +42,12 @@ const SignUp = () => {
         const user = result.user;
         updateUserInfo(profile);
         console.log(user);
+        Swal.fire(
+            'Congratulations!',
+            'Sign In Successfully!',
+            'success'
+          )
         form.reset();
-        
       })
       .catch((err) => console.error(err));
   };
@@ -57,7 +62,7 @@ const SignUp = () => {
 
   return (
     <div className="my-10">
-      <div className="border w-2/5 mx-auto p-10 rounded-lg shadow-lg">
+      <div className="border w-11/12 md:w-3/4 lg:w-2/5 mx-auto p-10 rounded-lg shadow-lg">
         <form onSubmit={handleSubmit}>
           <h2 className="text-4xl font-semibold text-slate-800 mt-5 mb-10 text-center">
             Sign Up
