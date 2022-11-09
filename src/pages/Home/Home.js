@@ -4,7 +4,7 @@ import withAutoplay from "react-awesome-slider/dist/autoplay";
 import "react-awesome-slider/dist/styles.css";
 import ServicesCard from "../../components/ServicesCard/ServicesCard";
 import "./Home.css";
-import {Link} from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 const AutoplaySlider = withAutoplay(AwesomeSlider);
 
@@ -12,7 +12,7 @@ const Home = () => {
   const [services, setServices] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/home/services")
+    fetch("https://maya-kitchen-corner-server.vercel.app/home/services")
       .then((res) => res.json())
       .then((data) => setServices(data));
   }, []);
@@ -143,8 +143,10 @@ const Home = () => {
         ))}
       </div>
       <div className="flex justify-center mt-16">
-        <Link to='/services'>
-            <button className="bg-yellow-300 text-xl font-semibold text-slate-700 py-1 px-8 rounded">See all</button>
+        <Link to="/services">
+          <button className="bg-yellow-300 text-xl font-semibold text-slate-700 py-1 px-8 rounded">
+            See all
+          </button>
         </Link>
       </div>
       <div>
