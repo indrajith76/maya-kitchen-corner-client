@@ -1,13 +1,70 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { AuthContext } from "../../contexts/AuthProvider";
 import { FaGoogle, FaFacebook, FaGithub } from "react-icons/fa";
+import Swal from "sweetalert2";
 
 const SignIn = () => {
+  const [error, setError] = useState("");
+  const { signIn, googleSignIn, facebookSignIn, githubSignIn } = useContext(AuthContext);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    signIn(email, password)
+      .then((result) => {
+        Swal.fire("Congratulations!", "Login Successfully.", "success");
+        setError("");
+        form.reset();
+      })
+      .catch((err) => {
+        console.error(err);
+        setError(err.message.slice(22, err.message.length - 2));
+      });
+  };
+
+  const handleGoogleSignIn=()=>{
+    googleSignIn()
+    .then(result => {
+      const user = result.user;
+      console.log(user);
+    })
+    .catch(err=>{
+      setError(err.message.slice(22,error.message.length-2))
+      console.error(err)})
+  }
+
+  const handleFacebookSignIn=()=>{
+    facebookSignIn()
+    .then(result => {
+      const user = result.user;
+      console.log(user);
+    })
+    .catch(err=>{
+      setError(err.message.slice(22,error.message.length-2))
+      console.error(err)})
+  }
+
+  const handleGithubSignIn=()=>{
+    githubSignIn()
+    .then(result => {
+      const user = result.user;
+      console.log(user);
+    })
+    .catch(err=>{
+      setError(err.message.slice(22,error.message.length-2))
+      console.error(err)})
+  }
+
+
   return (
     <div className="my-10">
-      <div className="border w-2/5 mx-auto p-10 rounded-lg shadow-lg">
-        <form>
-          <h2 className="text-4xl font-semibold text-slate-800 mt-5 mb-10 text-center">Sign In</h2>
+      <div className="border w-11/12 md:w-3/4 lg:w-2/5 mx-auto p-10 rounded-lg shadow-lg">
+        <form onSubmit={handleSubmit}>
+          <h2 className="text-4xl font-semibold text-slate-800 mt-5 mb-10 text-center">
+            Sign In
+          </h2>
           <label htmlFor="email" className="text-lg">
             E-mail
           </label>
@@ -17,9 +74,10 @@ const SignIn = () => {
             className="block w-full border h-10 pl-3 rounded my-4"
             id="email"
             placeholder="E-mail"
+            required
           />
           <label htmlFor="password" className="text-lg">
-            Password
+            Password <small className="text-red-500">{error}</small>
           </label>
           <input
             type="password"
@@ -27,6 +85,7 @@ const SignIn = () => {
             className="block w-full border h-10 pl-3 rounded my-4"
             id="password"
             placeholder="Password"
+            required
           />
           <div className="flex justify-center mt-10">
             <button
@@ -40,13 +99,13 @@ const SignIn = () => {
         <fieldset className="border mt-10">
           <legend className="text-center">Sign In with</legend>
           <div className="flex justify-center gap-20 py-5">
-            <button className="text-3xl text-slate-700">
+            <button onClick={handleGoogleSignIn} className="text-3xl text-slate-700">
               <FaGoogle />
             </button>
-            <button className="text-3xl text-slate-700">
+            <button onClick={handleFacebookSignIn} className="text-3xl text-slate-700">
               <FaFacebook />
             </button>
-            <button className="text-3xl text-slate-700">
+            <button onClick={handleGithubSignIn} className="text-3xl text-slate-700">
               <FaGithub />
             </button>
           </div>

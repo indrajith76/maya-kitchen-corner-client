@@ -5,7 +5,7 @@ import { AuthContext } from "../../contexts/AuthProvider";
 import Swal from "sweetalert2";
 
 const Header = () => {
-  const { user, logOut } = useContext(AuthContext); 
+  const { user, logOut } = useContext(AuthContext);
 
   const handleSignOut = () => {
     logOut()
@@ -71,7 +71,7 @@ const Header = () => {
                 <li>
                   <Link
                     to="/signin"
-                    className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-400 hover:bg-purple-700 focus:shadow-outline focus:outline-none"
+                    className="bg-yellow-400 px-5 py-2 rounded-lg text-slate-700 font-semibold"
                   >
                     Sign In
                   </Link>
@@ -79,7 +79,7 @@ const Header = () => {
                 <li>
                   <Link
                     to="/signup"
-                    className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-400 hover:bg-purple-700 focus:shadow-outline focus:outline-none"
+                    className="bg-yellow-400 px-5 py-2 rounded-lg text-slate-700 font-semibold"
                   >
                     Sign Up
                   </Link>
@@ -151,39 +151,47 @@ const Header = () => {
                           Home
                         </Link>
                       </li>
+                      {user && (
+                        <>
+                          <li>
+                            <Link
+                              to="/"
+                              className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-400"
+                            >
+                              My Reviews
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              to="/"
+                              className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-400"
+                            >
+                              Add Service
+                            </Link>
+                          </li>
+                          <li>
+                            <button
+                              onClick={handleSignOut}
+                              className="font-medium tracking-wide border bg-yellow-300 hover:bg-yellow-400 duration-500 px-3 py-1 rounded-md text-gray-700"
+                            >
+                              Log Out
+                            </button>
+                          </li>
+                        </>
+                      )}
                       <li>
                         <Link
-                          to="/"
-                          aria-label="Our product"
-                          title="Our product"
-                          className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-400"
+                          to="/signin"
+                          className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-400 hover:bg-purple-700 focus:shadow-outline focus:outline-none"
+                          aria-label="Sign in"
+                          title="Sign in"
                         >
-                          My Reviews
+                          Sign in
                         </Link>
                       </li>
                       <li>
                         <Link
-                          to="/"
-                          aria-label="Product pricing"
-                          title="Product pricing"
-                          className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-400"
-                        >
-                          Add Service
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          to="/"
-                          aria-label="About us"
-                          title="About us"
-                          className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-400"
-                        >
-                          LogOut
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          to="/"
+                          to="/signup"
                           className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-400 hover:bg-purple-700 focus:shadow-outline focus:outline-none"
                           aria-label="Sign up"
                           title="Sign up"

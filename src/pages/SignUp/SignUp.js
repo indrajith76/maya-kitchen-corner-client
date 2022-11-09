@@ -4,7 +4,13 @@ import Swal from "sweetalert2";
 import { AuthContext } from "../../contexts/AuthProvider";
 
 const SignUp = () => {
-  const { createUser, updateUserProfile } = useContext(AuthContext);
+  const {
+    createUser,
+    updateUserProfile,
+    googleSignIn,
+    facebookSignIn,
+    githubSignIn,
+  } = useContext(AuthContext);
   const [error, setError] = useState("");
 
   const handleSubmit = (event) => {
@@ -42,11 +48,7 @@ const SignUp = () => {
         const user = result.user;
         updateUserInfo(profile);
         console.log(user);
-        Swal.fire(
-            'Congratulations!',
-            'Sign In Successfully!',
-            'success'
-          )
+        Swal.fire("Congratulations!", "Sign In Successfully!", "success");
         form.reset();
       })
       .catch((err) => console.error(err));
@@ -58,6 +60,39 @@ const SignUp = () => {
         console.log("User info Updated");
       })
       .catch((err) => console.error(err));
+  };
+
+  const handleGoogleSignIn = () => {
+    googleSignIn()
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+
+  const handleFacebookSignIn = () => {
+    facebookSignIn()
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+
+  const handleGithubSignIn = () => {
+    githubSignIn()
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   };
 
   return (
@@ -76,6 +111,7 @@ const SignUp = () => {
             className="block w-full border h-10 pl-3 rounded my-4"
             id="name"
             placeholder="Name"
+            required
           />
           <label htmlFor="photoUrl" className="text-lg">
             Photo URL
@@ -86,6 +122,7 @@ const SignUp = () => {
             className="block w-full border h-10 pl-3 rounded my-4"
             id="photoUrl"
             placeholder="Photo URL"
+            required
           />
           <label htmlFor="email" className="text-lg">
             E-mail
@@ -96,6 +133,7 @@ const SignUp = () => {
             className="block w-full border h-10 pl-3 rounded my-4"
             id="email"
             placeholder="E-mail"
+            required
           />
           <label htmlFor="password" className="text-lg">
             Password <small className="text-red-500">{error}</small>
@@ -106,6 +144,7 @@ const SignUp = () => {
             className="block w-full border h-10 pl-3 rounded my-4"
             id="password"
             placeholder="Password"
+            required
           />
           <div className="flex justify-center mt-10">
             <button
@@ -119,13 +158,22 @@ const SignUp = () => {
         <fieldset className="border mt-10">
           <legend className="text-center">Sign Up with</legend>
           <div className="flex justify-center gap-20 py-5">
-            <button className="text-3xl text-slate-700">
+            <button
+              onClick={handleGoogleSignIn}
+              className="text-3xl text-slate-700"
+            >
               <FaGoogle />
             </button>
-            <button className="text-3xl text-slate-700">
+            <button
+              onClick={handleFacebookSignIn}
+              className="text-3xl text-slate-700"
+            >
               <FaFacebook />
             </button>
-            <button className="text-3xl text-slate-700">
+            <button
+              onClick={handleGithubSignIn}
+              className="text-3xl text-slate-700"
+            >
               <FaGithub />
             </button>
           </div>
