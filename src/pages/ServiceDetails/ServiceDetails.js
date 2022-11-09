@@ -1,13 +1,16 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useLoaderData, Link } from "react-router-dom";
 import Rating from "react-rating";
 import { FaRegStar, FaStar } from "react-icons/fa";
 import { AuthContext } from "../../contexts/AuthProvider";
+import ReviewCard from "../../components/ReviewCard/ReviewCard";
 
 const ServiceDetails = () => {
   const { user } = useContext(AuthContext);
   const { _id, title, img, description, price, rating } = useLoaderData();
   const [customerRating, setCustomerRating] = useState(0);
+  const [reviews, setReviews] = useState([]);
+  const [insertedId, setInsertId] = useState(null);
 
   const handleReviewSubmit = (event) => {
     event.preventDefault();
@@ -21,6 +24,7 @@ const ServiceDetails = () => {
       ratingReview: customerRating,
       userId: user?.uid,
       userName: user?.displayName,
+      userImg: img,
       date: new Date(),
     };
 
@@ -33,11 +37,17 @@ const ServiceDetails = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        setInsertId(data?.insertedId);
         form.reset();
       })
       .catch((err) => console.error(err));
   };
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/reviews/${_id}`)
+      .then((res) => res.json())
+      .then((data) => setReviews(data));
+  }, [insertedId]);
 
   return (
     <div className="container mx-auto mt-10">
@@ -74,7 +84,24 @@ const ServiceDetails = () => {
         </div>
       </div>
       <div className="px-5 lg:px-10 2xl:gap-14 2xl:px-32 mt-20 border-t">
-        <div className="w-full md:w-2/3 lg:w-2/5 mx-auto border mt-20 p-8">
+        <div
+          className="w-full md:w-2/3 lg:w-2/5 mx-auto border mt-20 p-8 relative shadow-lg rounded-lg"
+        >
+          {!user && (
+            <div className="bg-[#1515158f] absolute top-0 bottom-0 right-0 left-0 z-10 opacity-0 hover:opacity-100">
+              <h4 className="text-white text-center font-semibold text-2xl mt-[40%]">
+                Sign in first to drop your review.
+              </h4>
+              <p className="text-center text-2xl mt-2">
+                <Link
+                  to="/signin"
+                  className="text-yellow-500 text-center font-bold"
+                >
+                  Click here to sign in
+                </Link>
+              </p>
+            </div>
+          )}
           <h2 className="text-3xl mt-5 mb-10 text-center font-semibold text-slate-700">
             Drop your review
           </h2>
@@ -96,17 +123,24 @@ const ServiceDetails = () => {
               rows="5"
               placeholder="write your review here..."
               required
+              disabled={!user ? true : false}
             ></textarea>
             <div className="flex justify-center mt-10">
               <button
                 className="bg-yellow-500 hover:bg-yellow-400 duration-500 px-5 py-2 rounded-lg font-bold text-white"
                 type="submit"
+                disabled={!user ? true : false}
               >
                 Add Review
               </button>
             </div>
           </form>
         </div>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:px-5 lg:gap-10 lg:px-10 2xl:gap-14 2xl:px-32">
+        {reviews.map((review) => (
+          <ReviewCard key={review._id} review={review}></ReviewCard>
+        ))}
       </div>
     </div>
   );
