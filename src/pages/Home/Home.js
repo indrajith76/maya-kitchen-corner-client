@@ -194,7 +194,7 @@ const Home = () => {
             alt=""
           />
         </div>
-        <div className="lg:w-[50%] border p-5">
+        <div className="lg:w-[50%] p-5">
           <h3 className="text-4xl font-semibold text-yellow-500 mb-10">
             Why Maya's Kitchen?
           </h3>
@@ -230,6 +230,19 @@ const Home = () => {
             </div>
           ))}
         </Carousel>
+      </div>
+      <div>
+        <form className="w-[45%] border p-10 mx-auto shadow-lg rounded-lg">
+        <h3 className="text-center text-4xl mb-10 font-semibold text-slate-700">Contact Me</h3>
+          <label htmlFor="email">E-mail</label>
+          <input className="h-10 rounded border w-full my-5 pl-3" type="email" name="email" id="email" placeholder="Email" />
+          <label htmlFor="sub">Subject</label>
+          <input className="h-10 rounded border w-full my-5 pl-3" type="text" name="sub" id="sub" placeholder="Subject" />
+          <textarea className="rounded border w-full my-5 pl-3 pt-2" placeholder="write your message here" name="message" id="message" rows="5"></textarea>
+          <div className="flex justify-center">
+            <button className="bg-yellow-500 py-2 px-10 rounded">Send</button>
+          </div>
+        </form>
       </div>
     </div>
   );
