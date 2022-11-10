@@ -94,7 +94,7 @@ const ServiceDetails = () => {
       <div className="px-5 lg:px-10 2xl:gap-14 2xl:px-32 mt-20 border-t">
         <div className="w-full md:w-2/3 lg:w-2/5 mx-auto border mt-20 p-8 relative shadow-lg rounded-lg">
           {!user && (
-            <div className="bg-[#1515158f] absolute top-0 bottom-0 right-0 left-0 z-10 opacity-0 hover:opacity-100">
+            <div className="bg-[#1515158f] absolute top-0 bottom-0 right-0 left-0 z-10 opacity-0 hover:opacity-100 rounded-lg duration-500">
               <h4 className="text-white text-center font-semibold text-2xl mt-[40%]">
                 Sign in first to drop your review.
               </h4>

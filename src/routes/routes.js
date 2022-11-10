@@ -10,6 +10,7 @@ import ServiceDetails from "../pages/ServiceDetails/ServiceDetails";
 import Services from "../pages/Services/Services";
 import SignIn from "../pages/SignIn/SignIn";
 import SignUp from "../pages/SignUp/SignUp";
+import PrivateRoutes from "./PrivateRoutes/PrivateRoutes";
 
 export const router = createBrowserRouter([
   {
@@ -22,7 +23,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/addservice",
-        element: <AddService></AddService>,
+        element: (
+          <PrivateRoutes>
+            <AddService></AddService>
+          </PrivateRoutes>
+        ),
       },
       {
         path: "/services",
@@ -40,11 +45,19 @@ export const router = createBrowserRouter([
       },
       {
         path: "/myreviews",
-        element: <MyReviews></MyReviews>,
+        element: (
+          <PrivateRoutes>
+            <MyReviews></MyReviews>
+          </PrivateRoutes>
+        ),
       },
       {
         path: "/myreviews/edit/:id",
-        element: <EditReview></EditReview>,
+        element: (
+          <PrivateRoutes>
+            <EditReview></EditReview>
+          </PrivateRoutes>
+        ),
         loader: async ({ params }) =>
           fetch(
             `https://maya-kitchen-corner-server.vercel.app/myreview/${params.id}`

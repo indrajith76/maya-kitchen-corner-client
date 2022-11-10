@@ -3,11 +3,19 @@ import { AuthContext } from "../../contexts/AuthProvider";
 import { FaGoogle, FaFacebook, FaGithub } from "react-icons/fa";
 import Swal from "sweetalert2";
 import useTitle from "../../hooks/useTitle";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const SignIn = () => {
-  useTitle('Sign In')
+  useTitle("Sign In");
   const [error, setError] = useState("");
-  const { signIn, googleSignIn, facebookSignIn, githubSignIn } = useContext(AuthContext);
+  const { signIn, googleSignIn, facebookSignIn, githubSignIn } =
+    useContext(AuthContext);
+
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location?.state?.from?.pathname || "/";
+  console.log(location?.state);
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -19,6 +27,7 @@ const SignIn = () => {
         Swal.fire("Congratulations!", "Login Successfully.", "success");
         setError("");
         form.reset();
+        navigate(from, { replace: true });
       })
       .catch((err) => {
         console.error(err);
@@ -26,39 +35,43 @@ const SignIn = () => {
       });
   };
 
-  const handleGoogleSignIn=()=>{
+  const handleGoogleSignIn = () => {
     googleSignIn()
-    .then(result => {
-      const user = result.user;
-      console.log(user);
-    })
-    .catch(err=>{
-      setError(err.message.slice(22,error.message.length-2))
-      console.error(err)})
-  }
+      .then((result) => {
+        const user = result.user; 
+        navigate(from, { replace: true });
+      })
+      .catch((err) => {
+        setError(err.message.slice(22, error.message.length - 2));
+        console.error(err);
+      });
+  };
 
-  const handleFacebookSignIn=()=>{
+  const handleFacebookSignIn = () => {
     facebookSignIn()
-    .then(result => {
-      const user = result.user;
-      console.log(user);
-    })
-    .catch(err=>{
-      setError(err.message.slice(22,error.message.length-2))
-      console.error(err)})
-  }
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        navigate(from, { replace: true });
+      })
+      .catch((err) => {
+        setError(err.message.slice(22, error.message.length - 2));
+        console.error(err);
+      });
+  };
 
-  const handleGithubSignIn=()=>{
+  const handleGithubSignIn = () => {
     githubSignIn()
-    .then(result => {
-      const user = result.user;
-      console.log(user);
-    })
-    .catch(err=>{
-      setError(err.message.slice(22,error.message.length-2))
-      console.error(err)})
-  }
-
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        navigate(from, { replace: true });
+      })
+      .catch((err) => {
+        setError(err.message.slice(22, error.message.length - 2));
+        console.error(err);
+      });
+  };
 
   return (
     <div className="my-10">
@@ -101,13 +114,22 @@ const SignIn = () => {
         <fieldset className="border mt-10">
           <legend className="text-center">Sign In with</legend>
           <div className="flex justify-center gap-20 py-5">
-            <button onClick={handleGoogleSignIn} className="text-3xl text-slate-700">
+            <button
+              onClick={handleGoogleSignIn}
+              className="text-3xl text-slate-700"
+            >
               <FaGoogle />
             </button>
-            <button onClick={handleFacebookSignIn} className="text-3xl text-slate-700">
+            <button
+              onClick={handleFacebookSignIn}
+              className="text-3xl text-slate-700"
+            >
               <FaFacebook />
             </button>
-            <button onClick={handleGithubSignIn} className="text-3xl text-slate-700">
+            <button
+              onClick={handleGithubSignIn}
+              className="text-3xl text-slate-700"
+            >
               <FaGithub />
             </button>
           </div>
