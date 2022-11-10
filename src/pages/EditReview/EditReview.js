@@ -3,6 +3,7 @@ import { useLoaderData, useNavigate } from "react-router-dom";
 import Rating from "react-rating";
 import { FaRegStar, FaStar } from "react-icons/fa";
 import { AuthContext } from "../../contexts/AuthProvider";
+import Swal from "sweetalert2";
 
 const EditReview = () => {
   const { user } = useContext(AuthContext);
@@ -18,17 +19,15 @@ const EditReview = () => {
       review: event.target.textReview.value,
     };
 
-    console.log(review);
-
     fetch(`http://localhost:5000/myreview/${_id}`, {
-      method: "PUT",
+      method: "put",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(review),
     })
       .then((res) => res.json())
-      .than((data) => {
+      .then((data) => {
         if (data.modifiedCount > 0) {
-          alert("Updated ");
+          Swal.fire("Review Updated Successfully!", "", "success");
           navigate("/myreviews");
         }
       });
