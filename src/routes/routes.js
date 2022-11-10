@@ -1,6 +1,7 @@
 import { async } from "@firebase/util";
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../layouts/Main";
+import EditReview from "../pages/EditReview/EditReview";
 import Home from "../pages/Home/Home";
 import MyReviews from "../pages/MyReviews/MyReviews";
 import ServiceDetails from "../pages/ServiceDetails/ServiceDetails";
@@ -34,6 +35,14 @@ export const router = createBrowserRouter([
       {
         path: "/myreviews",
         element: <MyReviews></MyReviews>,
+      },
+      {
+        path: "/myreviews/edit/:id",
+        element: <EditReview></EditReview>,
+        loader: async ({ params }) =>
+          fetch(
+            `https://maya-kitchen-corner-server.vercel.app/myreview/${params.id}`
+          ),
       },
       {
         path: "/signin",

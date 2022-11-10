@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import logo from "../../assets/logo.png";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
 import Swal from "sweetalert2";
 
@@ -30,39 +30,56 @@ const Header = () => {
           </Link>
           <ul className="flex items-center hidden space-x-8 lg:flex">
             <li>
-              <Link
+              <NavLink
                 to="/"
-                className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                className={({ isActive }) =>
+                  isActive
+                    ? "font-medium tracking-wide text-yellow-600 underline underline-offset-2 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                    : "font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                }
+                end
               >
                 Home
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link
+              <NavLink
                 to="/services"
-                className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                className={({ isActive }) =>
+                  isActive
+                    ? "font-medium tracking-wide text-yellow-600 underline underline-offset-2 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                    : "font-medium tracking-wide text-gray-700 transition-colors duration-200"
+                }
               >
                 Foods
-              </Link>
+              </NavLink>
             </li>
 
             {user && (
               <>
                 <li>
-                  <Link
+                  <NavLink
                     to="/myreviews"
-                    className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                    className={({ isActive }) =>
+                      isActive
+                        ? "font-medium tracking-wide text-yellow-600 underline underline-offset-2 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                        : "font-medium tracking-wide text-gray-700 transition-colors duration-200"
+                    }
                   >
                     My Reviews
-                  </Link>
+                  </NavLink>
                 </li>
                 <li>
-                  <Link
+                  <NavLink
                     to="/"
-                    className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                    className={({ isActive }) =>
+                      isActive
+                        ? "font-medium tracking-wide text-yellow-600 underline underline-offset-2 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                        : "font-medium tracking-wide text-gray-700 transition-colors duration-200"
+                    }
                   >
                     Add Service
-                  </Link>
+                  </NavLink>
                 </li>
                 <li>
                   <button

@@ -136,7 +136,9 @@ const ServiceDetails = () => {
         </div>
       </div>
       <div>
-        <h2 className="text-4xl font-semibold text-slate-800 text-center my-20">Customers Review</h2>
+        <h2 className="text-4xl font-semibold text-slate-800 text-center my-20">
+          {reviews.length === 0 ? "No Reviews were added" : "Customers Review"}
+        </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:px-5 lg:gap-10 lg:px-10 2xl:gap-14 2xl:px-32">
           {reviews.map((review) => (
             <ReviewCard key={review._id} review={review}></ReviewCard>
