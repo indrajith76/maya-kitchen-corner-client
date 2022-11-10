@@ -232,7 +232,7 @@ const Home = () => {
         </Carousel>
       </div>
       <div>
-        <form className="w-[45%] border p-10 mx-auto shadow-lg rounded-lg">
+        <form className="md:w-[75%] lg:w-[45%] border p-5 md:p-10 mx-auto shadow-lg rounded-lg">
         <h3 className="text-center text-4xl mb-10 font-semibold text-slate-700">Contact Me</h3>
           <label htmlFor="email">E-mail</label>
           <input className="h-10 rounded border w-full my-5 pl-3" type="email" name="email" id="email" placeholder="Email" />
