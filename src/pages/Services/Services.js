@@ -4,10 +4,12 @@ import ServicesCard from "../../components/ServicesCard/ServicesCard";
 import AwesomeSlider from "react-awesome-slider";
 import withAutoplay from "react-awesome-slider/dist/autoplay";
 import "react-awesome-slider/dist/styles.css";
+import useTitle from "../../hooks/useTitle";
 
 const AutoplaySlider = withAutoplay(AwesomeSlider);
 
 const Services = () => {
+  useTitle('Foods')
   const services = useLoaderData();
   return (
     <div className="container mx-auto mt-10">

@@ -2,6 +2,7 @@ import { async } from "@firebase/util";
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../layouts/Main";
 import AddService from "../pages/AddService/AddService";
+import Blogs from "../pages/Blogs/Blogs";
 import EditReview from "../pages/EditReview/EditReview";
 import Home from "../pages/Home/Home";
 import MyReviews from "../pages/MyReviews/MyReviews";
@@ -20,8 +21,8 @@ export const router = createBrowserRouter([
         element: <Home></Home>,
       },
       {
-        path:'/addservice',
-        element:<AddService></AddService>
+        path: "/addservice",
+        element: <AddService></AddService>,
       },
       {
         path: "/services",
@@ -56,6 +57,10 @@ export const router = createBrowserRouter([
       {
         path: "/signup",
         element: <SignUp></SignUp>,
+      },
+      {
+        path: "/blogs",
+        element: <Blogs></Blogs>,
       },
     ],
   },

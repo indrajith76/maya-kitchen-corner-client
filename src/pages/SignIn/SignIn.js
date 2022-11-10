@@ -2,8 +2,10 @@ import React, { useContext, useState } from "react";
 import { AuthContext } from "../../contexts/AuthProvider";
 import { FaGoogle, FaFacebook, FaGithub } from "react-icons/fa";
 import Swal from "sweetalert2";
+import useTitle from "../../hooks/useTitle";
 
 const SignIn = () => {
+  useTitle('Sign In')
   const [error, setError] = useState("");
   const { signIn, googleSignIn, facebookSignIn, githubSignIn } = useContext(AuthContext);
   const handleSubmit = (event) => {

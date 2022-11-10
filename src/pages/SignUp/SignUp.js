@@ -2,8 +2,10 @@ import React, { useContext, useState } from "react";
 import { FaGoogle, FaFacebook, FaGithub } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../contexts/AuthProvider";
+import useTitle from "../../hooks/useTitle";
 
 const SignUp = () => {
+  useTitle('Sign Up')
   const {
     createUser,
     updateUserProfile,

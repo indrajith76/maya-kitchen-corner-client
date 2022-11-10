@@ -5,10 +5,12 @@ import "react-awesome-slider/dist/styles.css";
 import ServicesCard from "../../components/ServicesCard/ServicesCard";
 import "./Home.css";
 import { Link } from "react-router-dom";
+import useTitle from "../../hooks/useTitle";
 
 const AutoplaySlider = withAutoplay(AwesomeSlider);
 
 const Home = () => {
+  useTitle('Home')
   const [services, setServices] = useState([]);
 
   useEffect(() => {
