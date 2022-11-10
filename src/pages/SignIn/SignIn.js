@@ -56,7 +56,22 @@ const SignIn = () => {
     googleSignIn()
       .then((result) => {
         const user = result.user;
-        navigate(from, { replace: true });
+        const currentUser = {
+          id: user?.uid,
+        };
+        fetch("https://maya-kitchen-corner-server.vercel.app/jwt", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(currentUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            localStorage.setItem("token", data.token);
+            Swal.fire("Congratulations!", "Login Successfully.", "success");
+            navigate(from, { replace: true });
+          });
       })
       .catch((err) => {
         setError(err.message.slice(22, error.message.length - 2));
@@ -69,7 +84,24 @@ const SignIn = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
-        navigate(from, { replace: true });
+
+        const currentUser = {
+          id: user?.uid,
+        };
+
+        fetch("https://maya-kitchen-corner-server.vercel.app/jwt", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(currentUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            localStorage.setItem("token", data.token);
+            Swal.fire("Congratulations!", "Login Successfully.", "success");
+            navigate(from, { replace: true });
+          });
       })
       .catch((err) => {
         setError(err.message.slice(22, error.message.length - 2));
@@ -82,7 +114,24 @@ const SignIn = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
-        navigate(from, { replace: true });
+
+        const currentUser = {
+          id: user?.uid,
+        };
+
+        fetch("https://maya-kitchen-corner-server.vercel.app/jwt", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(currentUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            localStorage.setItem("token", data.token);
+            Swal.fire("Congratulations!", "Login Successfully.", "success");
+            navigate(from, { replace: true });
+          });
       })
       .catch((err) => {
         setError(err.message.slice(22, error.message.length - 2));

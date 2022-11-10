@@ -9,14 +9,11 @@ const MyReviews = () => {
   const [myReviews, setMyReviews] = useState([]);
   const [deletedCount, setDeletedCount] = useState(0);
   useEffect(() => {
-    fetch(
-      `https://maya-kitchen-corner-server.vercel.app/myreviews/${user?.uid}`,
-      {
-        headers: {
-          authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      }
-    )
+    fetch(`https://maya-kitchen-corner-server.vercel.app/myreviews/${user?.uid}`, {
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    })
       .then((res) => {
         if (res.status === 401 || res.status === 403) {
           return logOut();
