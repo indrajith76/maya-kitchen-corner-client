@@ -220,7 +220,7 @@ const Home = () => {
       </div>
       <hr />
       <div className="my-28">
-        <h2 className="text-5xl text-center font-semibold text-slate-700 mb-10">
+        <h2 className="text-4xl md:text-5xl text-center font-semibold text-slate-700 mb-10">
           Customer Testimonial
         </h2>
         <Carousel responsive={responsive}>

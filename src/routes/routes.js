@@ -3,6 +3,7 @@ import Main from "../layouts/Main";
 import AddService from "../pages/AddService/AddService";
 import Blogs from "../pages/Blogs/Blogs";
 import EditReview from "../pages/EditReview/EditReview";
+import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import Home from "../pages/Home/Home";
 import MyReviews from "../pages/MyReviews/MyReviews";
 import ServiceDetails from "../pages/ServiceDetails/ServiceDetails";
@@ -74,6 +75,10 @@ export const router = createBrowserRouter([
         path: "/blogs",
         element: <Blogs></Blogs>,
       },
+      {
+        path:'/*',
+        element:<ErrorPage></ErrorPage>
+      }
     ],
   },
 ]);
