@@ -19,7 +19,7 @@ const EditReview = () => {
       review: event.target.textReview.value,
     };
 
-    fetch(`http://localhost:5000/myreview/${_id}`, {
+    fetch(`https://maya-kitchen-corner-server.vercel.app/myreview/${_id}`, {
       method: "put",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(review),

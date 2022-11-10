@@ -11,7 +11,7 @@ const MyReviewCard = ({ myReview, setDeletedCount }) => {
   const handleDelete = () => {
     const deleted = window.confirm("Are want to delete this review?");
     if (deleted) {
-      fetch(`http://localhost:5000/myreview/${_id}`, {
+      fetch(`https://maya-kitchen-corner-server.vercel.app/myreview/${_id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())
