@@ -91,18 +91,18 @@ const Header = () => {
                 </li>
               </>
             )}
-                <li>
-                  <NavLink
-                    to="/blogs"
-                    className={({ isActive }) =>
-                      isActive
-                        ? "font-medium tracking-wide text-yellow-600 underline underline-offset-2 transition-colors duration-200 hover:text-deep-purple-accent-400"
-                        : "font-medium tracking-wide text-gray-700 transition-colors duration-200"
-                    }
-                  >
-                    Blogs
-                  </NavLink>
-                </li>
+            <li>
+              <NavLink
+                to="/blogs"
+                className={({ isActive }) =>
+                  isActive
+                    ? "font-medium tracking-wide text-yellow-600 underline underline-offset-2 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                    : "font-medium tracking-wide text-gray-700 transition-colors duration-200"
+                }
+              >
+                Blogs
+              </NavLink>
+            </li>
             {!user && (
               <>
                 <li>

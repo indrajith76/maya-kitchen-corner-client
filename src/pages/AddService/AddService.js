@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import useTitle from "../../hooks/useTitle";
 
 const AddService = () => {
-  useTitle('Add Service')
+  useTitle("Add Service");
   const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -23,7 +23,10 @@ const AddService = () => {
 
     fetch("https://maya-kitchen-corner-server.vercel.app/services/", {
       method: "POST",
-      headers: { "content-type": "application/json" },
+      headers: {
+        "content-type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
       body: JSON.stringify(service),
     })
       .then((res) => res.json())

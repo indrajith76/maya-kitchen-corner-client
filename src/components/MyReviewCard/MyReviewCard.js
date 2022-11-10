@@ -13,6 +13,9 @@ const MyReviewCard = ({ myReview, setDeletedCount }) => {
     if (deleted) {
       fetch(`https://maya-kitchen-corner-server.vercel.app/myreview/${_id}`, {
         method: "DELETE",
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
       })
         .then((res) => res.json())
         .then((data) => {

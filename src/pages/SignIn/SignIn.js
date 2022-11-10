@@ -14,7 +14,6 @@ const SignIn = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const from = location?.state?.from?.pathname || "/";
-  console.log(location?.state);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -24,10 +23,28 @@ const SignIn = () => {
 
     signIn(email, password)
       .then((result) => {
-        Swal.fire("Congratulations!", "Login Successfully.", "success");
-        setError("");
-        form.reset();
-        navigate(from, { replace: true });
+        const user = result.user;
+
+        console.log(user?.uid);
+        const currentUser = {
+          id: user?.uid,
+        };
+
+        fetch("https://maya-kitchen-corner-server.vercel.app/jwt", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(currentUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            localStorage.setItem("token", data.token);
+            Swal.fire("Congratulations!", "Login Successfully.", "success");
+            setError("");
+            form.reset();
+            navigate(from, { replace: true });
+          });
       })
       .catch((err) => {
         console.error(err);
@@ -38,7 +55,7 @@ const SignIn = () => {
   const handleGoogleSignIn = () => {
     googleSignIn()
       .then((result) => {
-        const user = result.user; 
+        const user = result.user;
         navigate(from, { replace: true });
       })
       .catch((err) => {

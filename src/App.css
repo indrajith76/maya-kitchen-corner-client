@@ -1,3 +1,11 @@
+.swal2-styled.swal2-confirm {
+  background: rgb(230, 214, 3) !important;
+}
+
+.swal2-success-line-long, .swal2-success-line-tip,.swal2-icon.swal2-success  {
+  background: rgb(230, 214, 3) !important;
+}
+
 .App {
   text-align: center;
 }

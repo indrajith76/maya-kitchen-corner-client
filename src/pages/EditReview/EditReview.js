@@ -21,7 +21,10 @@ const EditReview = () => {
 
     fetch(`https://maya-kitchen-corner-server.vercel.app/myreview/${_id}`, {
       method: "put",
-      headers: { "content-type": "application/json" },
+      headers: {
+        "content-type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
       body: JSON.stringify(review),
     })
       .then((res) => res.json())

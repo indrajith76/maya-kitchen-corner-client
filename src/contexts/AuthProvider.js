@@ -55,6 +55,7 @@ const AuthProvider = ({ children }) => {
   };
 
   const logOut = () => {
+    localStorage.removeItem("token");
     setLoading(true);
     return signOut(auth);
   };
@@ -76,7 +77,7 @@ const AuthProvider = ({ children }) => {
     githubSignIn,
     signIn,
     logOut,
-    loading
+    loading,
   };
 
   return (
