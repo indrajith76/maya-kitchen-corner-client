@@ -7,7 +7,7 @@ import ReviewCard from "../../components/ReviewCard/ReviewCard";
 
 const ServiceDetails = () => {
   const { user } = useContext(AuthContext);
-  const { _id, title, img, description, price, rating } = useLoaderData();
+  const { _id, title, img, description, price } = useLoaderData();
   const [customerRating, setCustomerRating] = useState(5);
   const [reviews, setReviews] = useState([]);
   const [insertedId, setInsertId] = useState(null);
@@ -43,6 +43,10 @@ const ServiceDetails = () => {
       .catch((err) => console.error(err));
   };
 
+  const rating =
+    parseFloat(reviews.reduce((p, c) => p + c.ratingReview, 0)) /
+    reviews.length;
+
   useEffect(() => {
     fetch(`https://maya-kitchen-corner-server.vercel.app/reviews/${_id}`)
       .then((res) => res.json())
@@ -63,7 +67,9 @@ const ServiceDetails = () => {
               Price : {price}tk
             </h3>
             <div className="flex gap-2 text-lg">
-              <p className="text-slate-600 font-semibold">{rating}</p>
+              <p className="text-slate-600 font-semibold">
+                {rating ? rating.toFixed(1) : "0.0"}
+              </p>
               <Rating
                 className="text-yellow-500"
                 placeholderRating={rating}

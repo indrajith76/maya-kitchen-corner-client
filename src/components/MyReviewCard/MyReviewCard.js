@@ -2,9 +2,28 @@ import React from "react";
 import Rating from "react-rating";
 import { FaRegStar, FaStar, FaEdit, FaTrashAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
-const MyReviewCard = ({ myReview }) => {
-  const { _id,userName, ratingReview, reviewMessage, userImg, date } = myReview;
+const MyReviewCard = ({ myReview, setDeletedCount }) => {
+  const { _id, userName, ratingReview, reviewMessage, userImg, date } =
+    myReview;
+
+  const handleDelete = () => {
+    const deleted = window.confirm("Are want to delete this review?");
+    if (deleted) {
+      fetch(`http://localhost:5000/myreview/${_id}`, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.deletedCount > 0) {
+            setDeletedCount(data.deletedCount);
+            Swal.fire("Review deleted successfully!", "", "success");
+          }
+        });
+    }
+  };
+
   return (
     <div className="border p-5 rounded shadow-lg">
       <div className="flex justify-between">
@@ -16,8 +35,18 @@ const MyReviewCard = ({ myReview }) => {
           </div>
         </div>
         <div className="flex items-center gap-2">
-          <Link to={`/myreviews/edit/${_id}`} className="bg-green-500 text-white p-2 rounded"><FaEdit/></Link>
-          <button className="bg-red-500 text-white p-2 rounded"><FaTrashAlt/></button>
+          <Link
+            to={`/myreviews/edit/${_id}`}
+            className="bg-green-500 text-white p-2 rounded"
+          >
+            <FaEdit />
+          </Link>
+          <button
+            onClick={handleDelete}
+            className="bg-red-500 text-white p-2 rounded"
+          >
+            <FaTrashAlt />
+          </button>
         </div>
       </div>
       <p className="my-3">{reviewMessage}</p>

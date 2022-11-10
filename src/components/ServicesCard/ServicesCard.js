@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Rating from "react-rating";
 import { FaRegStar, FaStar } from "react-icons/fa";
 import { Link } from "react-router-dom";
@@ -6,7 +6,19 @@ import { PhotoProvider, PhotoView } from "react-photo-view";
 import "react-photo-view/dist/react-photo-view.css";
 
 const ServicesCard = ({ service }) => {
-  const { _id, title, img, description, price, rating } = service;
+  const { _id, title, img, description, price } = service;
+  const [reviews, setReviews] = useState([]);
+
+  const rating =
+    parseFloat(reviews.reduce((p, c) => p + c.ratingReview, 0)) /
+    reviews.length;
+
+  useEffect(() => {
+    fetch(`https://maya-kitchen-corner-server.vercel.app/reviews/${_id}`)
+      .then((res) => res.json())
+      .then((data) => setReviews(data));
+  }, []);
+
   return (
     <div className="border shadow-lg rounded-lg">
       <div className=" p-5 pb-0">
@@ -27,7 +39,7 @@ const ServicesCard = ({ service }) => {
         <div className="flex justify-between my-4">
           <p className="text-xl font-bold text-slate-800">Price : {price}tk</p>
           <div className="flex gap-1 items-center">
-            <p>{rating}</p>
+            <p>{ rating ? rating.toFixed(1) :'0.0'}</p>
             <Rating
               className="text-yellow-500"
               placeholderRating={rating}

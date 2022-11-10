@@ -71,7 +71,7 @@ const Header = () => {
                 </li>
                 <li>
                   <NavLink
-                    to="/"
+                    to="/addservice"
                     className={({ isActive }) =>
                       isActive
                         ? "font-medium tracking-wide text-yellow-600 underline underline-offset-2 transition-colors duration-200 hover:text-deep-purple-accent-400"
@@ -79,6 +79,18 @@ const Header = () => {
                     }
                   >
                     Add Service
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/"
+                    className={({ isActive }) =>
+                      isActive
+                        ? "font-medium tracking-wide text-yellow-600 underline underline-offset-2 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                        : "font-medium tracking-wide text-gray-700 transition-colors duration-200"
+                    }
+                  >
+                    Blogs
                   </NavLink>
                 </li>
                 <li>
@@ -186,7 +198,7 @@ const Header = () => {
                         <>
                           <li>
                             <Link
-                              to="/"
+                              to="/myreviews"
                               className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-400"
                             >
                               My Reviews
@@ -194,10 +206,18 @@ const Header = () => {
                           </li>
                           <li>
                             <Link
-                              to="/"
+                              to="/addservice"
                               className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-400"
                             >
                               Add Service
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              to="/blogs"
+                              className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-400"
+                            >
+                              Blogs
                             </Link>
                           </li>
                           <li>
