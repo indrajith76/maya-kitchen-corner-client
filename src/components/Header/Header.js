@@ -82,18 +82,6 @@ const Header = () => {
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink
-                    to="/"
-                    className={({ isActive }) =>
-                      isActive
-                        ? "font-medium tracking-wide text-yellow-600 underline underline-offset-2 transition-colors duration-200 hover:text-deep-purple-accent-400"
-                        : "font-medium tracking-wide text-gray-700 transition-colors duration-200"
-                    }
-                  >
-                    Blogs
-                  </NavLink>
-                </li>
-                <li>
                   <button
                     onClick={handleSignOut}
                     className="font-medium tracking-wide border bg-yellow-300 hover:bg-yellow-400 duration-500 px-3 py-1 rounded-md text-gray-700"
@@ -103,6 +91,18 @@ const Header = () => {
                 </li>
               </>
             )}
+                <li>
+                  <NavLink
+                    to="/blogs"
+                    className={({ isActive }) =>
+                      isActive
+                        ? "font-medium tracking-wide text-yellow-600 underline underline-offset-2 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                        : "font-medium tracking-wide text-gray-700 transition-colors duration-200"
+                    }
+                  >
+                    Blogs
+                  </NavLink>
+                </li>
             {!user && (
               <>
                 <li>
@@ -213,14 +213,6 @@ const Header = () => {
                             </Link>
                           </li>
                           <li>
-                            <Link
-                              to="/blogs"
-                              className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-400"
-                            >
-                              Blogs
-                            </Link>
-                          </li>
-                          <li>
                             <button
                               onClick={handleSignOut}
                               className="font-medium tracking-wide border bg-yellow-300 hover:bg-yellow-400 duration-500 px-3 py-1 rounded-md text-gray-700"
@@ -232,24 +224,36 @@ const Header = () => {
                       )}
                       <li>
                         <Link
-                          to="/signin"
-                          className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-400 hover:bg-purple-700 focus:shadow-outline focus:outline-none"
-                          aria-label="Sign in"
-                          title="Sign in"
+                          to="/blogs"
+                          className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-400"
                         >
-                          Sign in
+                          Blogs
                         </Link>
                       </li>
-                      <li>
-                        <Link
-                          to="/signup"
-                          className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-400 hover:bg-purple-700 focus:shadow-outline focus:outline-none"
-                          aria-label="Sign up"
-                          title="Sign up"
-                        >
-                          Sign up
-                        </Link>
-                      </li>
+                      {!user && (
+                        <>
+                          <li>
+                            <Link
+                              to="/signin"
+                              className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-400 hover:bg-purple-700 focus:shadow-outline focus:outline-none"
+                              aria-label="Sign in"
+                              title="Sign in"
+                            >
+                              Sign in
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              to="/signup"
+                              className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-400 hover:bg-purple-700 focus:shadow-outline focus:outline-none"
+                              aria-label="Sign up"
+                              title="Sign up"
+                            >
+                              Sign up
+                            </Link>
+                          </li>
+                        </>
+                      )}
                     </ul>
                   </nav>
                 </div>

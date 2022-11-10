@@ -12,16 +12,21 @@ const MyReviews = () => {
     )
       .then((res) => res.json())
       .then((data) => setMyReviews(data));
-  }, [user, deletedCount,]);
+  }, [user, deletedCount]);
   return (
-    <div className="container mx-auto grid grid-cols-1 px-5 lg:p-0 lg:grid-cols-2 gap-10 mt-10">
-      {myReviews.map((myReview) => (
-        <MyReviewCard
-          key={myReview?._id}
-          setDeletedCount={setDeletedCount}
-          myReview={myReview}
-        ></MyReviewCard>
-      ))}
+    <div>
+      {
+        myReviews.length === 0 && <h2 className="text-3xl text-slate-500 font-semibold text-center mt-20">No reviews ware added</h2>
+      }
+      <div className="container mx-auto grid grid-cols-1 px-5 lg:p-0 lg:grid-cols-2 gap-10 mt-10">
+        {myReviews.map((myReview) => (
+          <MyReviewCard
+            key={myReview?._id}
+            setDeletedCount={setDeletedCount}
+            myReview={myReview}
+          ></MyReviewCard>
+        ))}
+      </div>
     </div>
   );
 };

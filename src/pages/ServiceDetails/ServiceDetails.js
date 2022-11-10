@@ -4,6 +4,7 @@ import Rating from "react-rating";
 import { FaRegStar, FaStar } from "react-icons/fa";
 import { AuthContext } from "../../contexts/AuthProvider";
 import ReviewCard from "../../components/ReviewCard/ReviewCard";
+import Swal from "sweetalert2";
 
 const ServiceDetails = () => {
   const { user } = useContext(AuthContext);
@@ -38,6 +39,7 @@ const ServiceDetails = () => {
       .then((res) => res.json())
       .then((data) => {
         setInsertId(data?.insertedId);
+        Swal.fire("Review added successfully!", "", "success");
         form.reset();
       })
       .catch((err) => console.error(err));
