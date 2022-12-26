@@ -54,7 +54,7 @@ const ServiceDetails = () => {
     fetch(`https://maya-kitchen-corner-server.vercel.app/reviews/${_id}`)
       .then((res) => res.json())
       .then((data) => setReviews(data));
-  }, [insertedId]);
+  }, [insertedId, _id]);
 
   return (
     <div className="container mx-auto mt-10">
