@@ -236,11 +236,9 @@ const Home = () => {
       <div className="my-32">
         <div className="grid gap-10 lg:grid-cols-2">
           <div className="flex flex-col justify-center md:pr-8 xl:pr-0 lg:max-w-lg">
-            <div className="flex items-center justify-center w-16 h-16 mb-4 rounded-full bg-teal-accent-400">
-              
-            </div>
+            
             <div className="max-w-xl mb-6">
-              <h2 className="max-w-lg mb-6 text-3xl font-semibold text-yellow-500 sm:text-4xl sm:leading-none">
+              <h2 className="max-w-lg mb-6 text-3xl font-semibold text-yellow-500 sm:text-4xl">
                 How we cooking
                 <br className="hidden md:block" />
                 your favorite food{" "}
