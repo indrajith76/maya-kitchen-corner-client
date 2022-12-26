@@ -17,7 +17,7 @@ const ServicesCard = ({ service }) => {
     fetch(`https://maya-kitchen-corner-server.vercel.app/reviews/${_id}`)
       .then((res) => res.json())
       .then((data) => setReviews(data));
-  }, []);
+  }, [_id]);
 
   return (
     <div className="border shadow-lg rounded-lg">
@@ -31,10 +31,10 @@ const ServicesCard = ({ service }) => {
             />
           </PhotoView>
         </PhotoProvider>
-        <h3 className="text-2xl font-semibold">{title}</h3>
-        <p>
+        <h3 className="text-2xl font-semibold text-slate-800">{title}</h3>
+        <p className="text-gray-700">
           {description.slice(0, 100)}
-          <span className="text-blue-600 cursor-pointer">...Read More</span>
+          <Link to={`/service/${_id}`} className="text-blue-600 cursor-pointer">...Read More</Link>
         </p>
         <div className="flex justify-between my-4">
           <p className="text-xl font-bold text-slate-800">Price : {price}tk</p>
@@ -53,7 +53,7 @@ const ServicesCard = ({ service }) => {
       </div>
       <div>
         <Link to={`/service/${_id}`}>
-          <button className="w-full bg-yellow-300 py-1 rounded-b-lg text-lg font-semibold text-slate-800">
+          <button className="w-full bg-yellow-500 py-1 rounded-b-lg text-lg font-semibold text-white">
             Details
           </button>
         </Link>

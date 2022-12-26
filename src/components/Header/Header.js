@@ -34,7 +34,7 @@ const Header = () => {
                 to="/"
                 className={({ isActive }) =>
                   isActive
-                    ? "font-medium tracking-wide text-yellow-600 underline underline-offset-2 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                    ? "font-medium tracking-wide text-yellow-400 underline underline-offset-2 transition-colors duration-200 hover:text-deep-purple-accent-400"
                     : "font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
                 }
                 end
@@ -47,7 +47,7 @@ const Header = () => {
                 to="/services"
                 className={({ isActive }) =>
                   isActive
-                    ? "font-medium tracking-wide text-yellow-600 underline underline-offset-2 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                    ? "font-medium tracking-wide text-yellow-400 underline underline-offset-2 transition-colors duration-200 hover:text-deep-purple-accent-400"
                     : "font-medium tracking-wide text-gray-700 transition-colors duration-200"
                 }
               >
@@ -62,7 +62,7 @@ const Header = () => {
                     to="/myreviews"
                     className={({ isActive }) =>
                       isActive
-                        ? "font-medium tracking-wide text-yellow-600 underline underline-offset-2 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                        ? "font-medium tracking-wide text-yellow-400 underline underline-offset-2 transition-colors duration-200 hover:text-deep-purple-accent-400"
                         : "font-medium tracking-wide text-gray-700 transition-colors duration-200"
                     }
                   >
@@ -74,7 +74,7 @@ const Header = () => {
                     to="/addservice"
                     className={({ isActive }) =>
                       isActive
-                        ? "font-medium tracking-wide text-yellow-600 underline underline-offset-2 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                        ? "font-medium tracking-wide text-yellow-400 underline underline-offset-2 transition-colors duration-200 hover:text-deep-purple-accent-400"
                         : "font-medium tracking-wide text-gray-700 transition-colors duration-200"
                     }
                   >
@@ -84,7 +84,7 @@ const Header = () => {
                 <li>
                   <button
                     onClick={handleSignOut}
-                    className="font-medium tracking-wide border bg-yellow-300 hover:bg-yellow-400 duration-500 px-3 py-1 rounded-md text-gray-700"
+                    className="font-medium tracking-wide border bg-yellow-400 hover:bg-yellow-300 duration-500 px-3 py-1 rounded-md text-white"
                   >
                     Log Out
                   </button>
@@ -96,7 +96,7 @@ const Header = () => {
                 to="/blogs"
                 className={({ isActive }) =>
                   isActive
-                    ? "font-medium tracking-wide text-yellow-600 underline underline-offset-2 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                    ? "font-medium tracking-wide text-yellow-400 underline underline-offset-2 transition-colors duration-200 hover:text-deep-purple-accent-400"
                     : "font-medium tracking-wide text-gray-700 transition-colors duration-200"
                 }
               >
