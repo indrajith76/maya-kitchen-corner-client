@@ -62,7 +62,7 @@ const Home = () => {
         interval={6000}
         className="h-[85vh] 2xl:h-[500px]"
       >
-        <div data-src="https://miro.medium.com/max/1400/1*MkWAwWOVFvOlSuzwELCjfw.jpeg">
+        <div data-src="/banner-img/first-banner-img.jpg">
           <div className="bg-black absolute top-0 bottom-0 left-0 right-0 opacity-50"></div>
           <div className="absolute left-0 right-0 bottom-28 text-center">
             <h1
@@ -89,7 +89,7 @@ const Home = () => {
             </p>
           </div>
         </div>
-        <div data-src="https://keralainformation.com/directory/wp-content/uploads/2016/08/bala.jpg">
+        <div data-src="/banner-img/second-banner-img.jpg">
           <div className="bg-black absolute top-0 bottom-0 left-0 right-0 opacity-50"></div>
           <div className="absolute left-0 right-0 bottom-28 text-center">
             <h1
@@ -116,7 +116,7 @@ const Home = () => {
             </p>
           </div>
         </div>
-        <div data-src="https://media.easemytrip.com/media/Blog/India/636977607425696252/636977607425696252QYiiUU.jpg">
+        <div data-src="/banner-img/third-banner-img.webp">
           <div className="bg-black absolute top-0 bottom-0 left-0 right-0 opacity-50"></div>
           <div className="absolute left-0 right-0 bottom-28 text-center">
             <h1
@@ -143,7 +143,7 @@ const Home = () => {
             </p>
           </div>
         </div>
-        <div data-src="https://www.dineout.co.in/blog/wp-content/uploads/2019/08/sun-planet.jpg">
+        <div data-src="/banner-img/fourth-banner-img.jpg">
           <div className="bg-black absolute top-0 bottom-0 left-0 right-0 opacity-50"></div>
           <div className="absolute left-0 right-0 bottom-28 text-center">
             <h1
@@ -199,12 +199,12 @@ const Home = () => {
         <div className="relative p-4 border rounded-2xl shadow-xl">
           <img
             className="h-full rounded-2xl"
-            src="https://images.immediate.co.uk/production/volatile/sites/2/2019/04/OLI-EasterIssue2019-Everyday_ChannaMasala_31526-bc1e5ad.jpg?quality=90&crop=21px,1302px,5442px,3625px&resize=700,466"
+            src="ChannaMasala.jpg"
             alt=""
           />
           <img
             className="absolute -bottom-12 right-14 md:-bottom-20 lg:-bottom-16 md:-right-1 lg:-right-16 w-[60%]"
-            src="https://theguydangerous.github.io/FoodCoders/images/momos-png-11.png"
+            src="momos-png.png"
             alt=""
           />
         </div>
